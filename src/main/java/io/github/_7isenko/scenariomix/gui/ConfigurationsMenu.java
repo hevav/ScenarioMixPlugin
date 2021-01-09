@@ -25,15 +25,14 @@ import java.util.Arrays;
 import java.util.Map;
 
 public class ConfigurationsMenu extends Menu {
-    private final String name;
     private final Map<String, Configuration> configs;
     private final Menu previous;
     private Listener listener;
 
     public ConfigurationsMenu(Scenario scenario, Menu previousMenu) {
+        super("Конфигурация для сценария \"" + scenario.getName() + "\"");
         this.previous = previousMenu;
         configs = scenario.getConfigs();
-        name = "Конфигурация для сценария \"" + scenario.getName() + "\"";
         this.inventory = create(scenario);
         if (inventory != null) {
             listener = new ConfigurationsMenu.MenuListener();

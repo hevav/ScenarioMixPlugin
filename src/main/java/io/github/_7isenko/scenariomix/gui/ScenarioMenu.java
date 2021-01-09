@@ -24,10 +24,10 @@ import java.util.Map;
 
 public class ScenarioMenu extends Menu {
     protected Map<Integer, Scenario> scenarios;
-    private final String name = "Доступные сценарии";
     private final Menu menuInstance;
 
     public ScenarioMenu() {
+        super("Доступные сценарии");
         scenarios = ScenarioManager.getInstance().getScenarios();
         inventory = createInventory(name, ScenarioManager.getInstance().getScenarios());
         menuInstance = this;
