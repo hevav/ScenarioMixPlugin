@@ -1,6 +1,5 @@
 package io.github._7isenko.scenariomix.scenarios.gameplay.apocalypse;
 
-import org.bukkit.Material;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

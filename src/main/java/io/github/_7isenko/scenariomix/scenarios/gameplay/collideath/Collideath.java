@@ -1,7 +1,6 @@
 package io.github._7isenko.scenariomix.scenarios.gameplay.collideath;
 
 import io.github._7isenko.scenariomix.scenarios.Scenario;
-import org.bukkit.Material;
 
 public class Collideath extends Scenario {
     public Collideath() {

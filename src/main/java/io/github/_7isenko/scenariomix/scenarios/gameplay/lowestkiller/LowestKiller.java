@@ -3,7 +3,6 @@ package io.github._7isenko.scenariomix.scenarios.gameplay.lowestkiller;
 import io.github._7isenko.scenariomix.ScenarioMix;
 import io.github._7isenko.scenariomix.scenarios.Scenario;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.scheduler.BukkitTask;
 
 public class LowestKiller extends Scenario {

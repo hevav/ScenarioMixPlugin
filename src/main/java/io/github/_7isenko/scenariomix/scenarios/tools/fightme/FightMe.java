@@ -1,7 +1,6 @@
 package io.github._7isenko.scenariomix.scenarios.tools.fightme;
 
 import io.github._7isenko.scenariomix.scenarios.Scenario;
-import org.bukkit.Material;
 
 public class FightMe extends Scenario {
     public FightMe() {

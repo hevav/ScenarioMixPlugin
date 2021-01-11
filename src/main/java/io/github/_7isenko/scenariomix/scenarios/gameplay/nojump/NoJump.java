@@ -1,7 +1,6 @@
 package io.github._7isenko.scenariomix.scenarios.gameplay.nojump;
 
 import io.github._7isenko.scenariomix.scenarios.Scenario;
-import org.bukkit.Material;
 
 public class NoJump extends Scenario {
 

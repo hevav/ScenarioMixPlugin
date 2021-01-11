@@ -2,7 +2,6 @@ package io.github._7isenko.scenariomix.scenarios.tools.heightlimit;
 
 import io.github._7isenko.scenariomix.scenarios.config.Configuration;
 import io.github._7isenko.scenariomix.scenarios.Scenario;
-import org.bukkit.Material;
 
 public class HeightLimit extends Scenario {
     public HeightLimit() {

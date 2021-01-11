@@ -1,7 +1,6 @@
 package io.github._7isenko.scenariomix.scenarios.gameplay.pusher;
 
 import io.github._7isenko.scenariomix.scenarios.Scenario;
-import org.bukkit.Material;
 
 public class Pusher extends Scenario {
 

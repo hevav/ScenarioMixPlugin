@@ -1,7 +1,6 @@
 package io.github._7isenko.scenariomix.scenarios.gameplay.lastsight;
 
 import io.github._7isenko.scenariomix.scenarios.Scenario;
-import org.bukkit.Material;
 
 public class LastSight extends Scenario {
 

@@ -4,7 +4,6 @@ import io.github._7isenko.scenariomix.scenarios.Scenario;
 import io.github._7isenko.scenariomix.scenarios.config.Configuration;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
