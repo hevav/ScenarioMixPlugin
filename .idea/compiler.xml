@@ -7,8 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ScenarioMix" />
-        <module name="MadMix" />
         <module name="SpigotPlugin" />
+        <module name="MadMix" />
+        <module name="ScenarioMixPlugin" />
       </profile>
     </annotationProcessing>
   </component>

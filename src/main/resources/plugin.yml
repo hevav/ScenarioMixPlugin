@@ -1,20 +1,29 @@
-name: ScenarioMix
-version: "1.1.0"
-authors: [7isenko, hevav]
-api-version: 1.16
-main: io.github._7isenko.scenariomix.ScenarioMix
+name: EssentialsH
+version: ${project.version}
+authors: [7isenko, hevav] # Fork of ScenarioMix by 7isenko
+api-version: 1.15 # 1.16 breaks compatibility with 1.15; 1.15 allows to get 1.16 items in Material.values()
+main: dev.hevav.essentialsplugin.Plugin
 commands:
-  mix:
-    description: Открывает меню сценариев
-    usage: /mix или /mix <сценарий> <конфиг> <значение>
-    permission: scenariomix.menu
+  es:
+    description: Открывает меню сценариев hevav's Essentials
+    usage: /es или /es <сценарий> <конфиг> <значение>
+    permission: essentialsh.menu
+    aliases: [mix]
+  ec:
+    description: Открывает меню быстрых команд hevav's Essentials
+    usage: /ec или /ec <быстрая команда>
+    permission: essentialsh.cmd
+    aliases: [essentials]
 permissions:
-  scenariomix.menu:
+  essentialsh.menu:
     default: op
     description: Открывать меню сценариев
-  scenariomix.tools:
+  essentialsh.cmd:
+    default: op
+    description: Открывать меню быстрых команд
+  essentialsh.tools:
     default: op
     description: Использовать инструменты с плагина
-  scenariomix.debug:
+  essentialsh.debug:
     default: op
     description: Показывать сообщения отладки
