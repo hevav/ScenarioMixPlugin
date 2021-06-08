@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>dev.hevav.essentialsplugin</groupId>
-    <artifactId>EssentialsH</artifactId>
-    <version>1.1.1</version>
+    <groupId>dev.hevav.elytramix</groupId>
+    <artifactId>ElytraMix</artifactId>
+    <version>1.1.1-pre2</version>
     <packaging>jar</packaging>
 
-    <name>EssentialsH</name>
+    <name>ElytraMix</name>
 
     <properties>
         <java.version>1.8</java.version>
@@ -66,6 +66,12 @@
             <artifactId>spigot-api</artifactId>
             <version>1.16.5-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

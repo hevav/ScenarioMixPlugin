@@ -1,29 +1,79 @@
-name: EssentialsH
+name: ElytraMix
 version: ${project.version}
-authors: [7isenko, hevav] # Fork of ScenarioMix by 7isenko
+authors: [7isenko, hevav, urFate] # Fork of ScenarioMix by 7isenko
 api-version: 1.15 # 1.16 breaks compatibility with 1.15; 1.15 allows to get 1.16 items in Material.values()
-main: dev.hevav.essentialsplugin.Plugin
+main: dev.hevav.elytramix.Plugin
+
 commands:
   es:
-    description: Открывает меню сценариев hevav's Essentials
+    description: Открывает меню сценариев ElytraMix
     usage: /es или /es <сценарий> <конфиг> <значение>
-    permission: essentialsh.menu
+    permission: elytramix.menu
     aliases: [mix]
   ec:
-    description: Открывает меню быстрых команд hevav's Essentials
+    description: Открывает меню быстрых команд ElytraMix
     usage: /ec или /ec <быстрая команда>
-    permission: essentialsh.cmd
+    permission: elytramix.cmd
     aliases: [essentials]
+  bc:
+    description: Отправляет сообщение на весь сервер
+    usage: /bc <сообщение>
+    permission: elytramix.tools
+    aliases: [broadcast]
+  day:
+    description: Устанавливает дневное время суток
+    usage: /day
+    permission: elytramix.tools
+  fly:
+    description: Включает режим полёта для игрока
+    usage: /fly <игрок | *> <enable | disable>
+    permission: elytramix.tools
+  gm:
+    description: Переключает игровой режим
+    usage: /gm <режим> <игрок | *>
+    permission: elytramix.tools
+    aliases: [gamemode]
+  heal:
+    description: Исцеляет игрока
+    usage: /heal <игрок | *>
+    permission: elytramix.tools
+  kickall:
+    description: Кикает всех игроков
+    usage: /kickall
+    permission: elytramix.tools
+  mobkill:
+    description: Убивает всех мобов
+    usage: /mobkill <радиус>
+    permission: elytramix.tools
+  night:
+    description: Устанавливает ночное время суток
+    usage: /night
+    permission: elytramix.tools
+  powertool:
+    description: Делает из предмета волшебную палочку
+    usage: /pt <команда>
+    permission: elytramix.tools
+    aliases: [pt]
+  rain:
+    description: Устанавливает дождливую погоду
+    usage: /rain
+    permission: elytramix.tools
+  sun:
+    description: Устанавливает солнечную погоду
+    usage: /sun
+    permission: elytramix.tools
+
+
 permissions:
-  essentialsh.menu:
+  elytramix.menu:
     default: op
     description: Открывать меню сценариев
-  essentialsh.cmd:
+  elytramix.cmd:
     default: op
     description: Открывать меню быстрых команд
-  essentialsh.tools:
+  elytramix.tools:
     default: op
     description: Использовать инструменты с плагина
-  essentialsh.debug:
+  elytramix.debug:
     default: op
     description: Показывать сообщения отладки
