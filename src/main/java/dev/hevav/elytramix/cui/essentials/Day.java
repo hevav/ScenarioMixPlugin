@@ -19,7 +19,7 @@ public class Day implements CommandExecutor {
         World world = p.getWorld();
         world.setTime(0); // Устанавливаем время на 0 тиков
 
-        p.sendMessage(ChatColor.GRAY+"§8§l[§5§lElytrium§8§l] Время изменено на §c0 §7тиков в измерении §c"+world.getName());
+        p.sendMessage(ChatColor.GRAY+"§8§l[§5§lElytrium§8§l] &7Время изменено на §c0 §7тиков в измерении §c"+world.getName());
 
         return true;
     }
