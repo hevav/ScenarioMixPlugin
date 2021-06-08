@@ -18,7 +18,7 @@ public class Night implements CommandExecutor {
         Player p = (Player) commandSender;
         World world = p.getWorld();
         world.setTime(14000);
-        commandSender.sendMessage(ChatColor.GRAY+"§8§l[§5§lElytrium§8§l] Время изменено на §c14000 §7тиков в измерении §c"+world.getName());
+        commandSender.sendMessage(ChatColor.GRAY+"§8§l[§5§lElytrium§8§l] &7Время изменено на §c14000 §7тиков в измерении §c"+world.getName());
         return true;
     }
 }
