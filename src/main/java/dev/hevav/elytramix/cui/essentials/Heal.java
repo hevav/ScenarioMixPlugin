@@ -18,6 +18,7 @@ public class Heal implements CommandExecutor {
             }
             Player p = (Player) commandSender;
             p.setHealth(20);
+            p.setFoodLevel(20);
             commandSender.sendMessage("§8§l[§5§lElytrium§8§l] §6Вы были исцелены");
         }
         if(strings.length == 1) {
