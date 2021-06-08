@@ -43,14 +43,11 @@ public class PowerTool implements CommandExecutor {
 
         if(!plugin.powertoolData().contains(uuid)){
             createColumn(toolCommand, itemStack, player);
-            commandSender.sendMessage("Создана новая ячейка");
         } else if(!plugin.powertoolData().contains(uuid+"."+itemID)){
             plugin.powertoolData().set(uuid+"."+itemID, toolCommand);
-            commandSender.sendMessage("Данные созданы");
             savePowertool();
         } else if(plugin.powertoolData().contains(uuid+"."+itemID)){
             plugin.powertoolData().set(uuid+"."+itemID, toolCommand);
-            commandSender.sendMessage("Данные перезаписаны");
             savePowertool();
         }
 
