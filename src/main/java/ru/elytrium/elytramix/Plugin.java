@@ -1,38 +1,39 @@
-package dev.hevav.elytramix;
+package ru.elytrium.elytramix;
 
-import dev.hevav.elytramix.cui.ConfigurationTabCompleter;
-import dev.hevav.elytramix.cui.ScenarioMixCommand;
-import dev.hevav.elytramix.cui.essentials.*;
-import dev.hevav.elytramix.events.PowerToolUse;
-import dev.hevav.elytramix.scenarios.ScenarioCategory;
-import dev.hevav.elytramix.scenarios.ScenarioManager;
-import dev.hevav.elytramix.scenarios.gameplay.apocalypse.Apocalypse;
-import dev.hevav.elytramix.scenarios.gameplay.blockshuffle.BlockShuffle;
-import dev.hevav.elytramix.scenarios.gameplay.collideath.Collideath;
-import dev.hevav.elytramix.scenarios.gameplay.lastsight.LastSight;
-import dev.hevav.elytramix.scenarios.gameplay.lowestkiller.LowestKiller;
-import dev.hevav.elytramix.scenarios.gameplay.nojump.NoJump;
-import dev.hevav.elytramix.scenarios.gameplay.playerswap.PlayerSwap;
-import dev.hevav.elytramix.scenarios.gameplay.pusher.Pusher;
-import dev.hevav.elytramix.scenarios.gameplay.randomgive.RandomGive;
-import dev.hevav.elytramix.scenarios.gameplay.security.Security;
-import dev.hevav.elytramix.scenarios.gameplay.snowballs.Snowballs;
-import dev.hevav.elytramix.scenarios.gameplay.snowfall.Snowfall;
-import dev.hevav.elytramix.scenarios.gameplay.spiderpocalypse.Spiderpocalypse;
-import dev.hevav.elytramix.scenarios.gameplay.throwtnt.ThrowTNT;
-import dev.hevav.elytramix.scenarios.tools.autorespawn.AutoRespawn;
-import dev.hevav.elytramix.scenarios.tools.autospectator.AutoSpectator;
-import dev.hevav.elytramix.scenarios.tools.fightme.FightMe;
-import dev.hevav.elytramix.scenarios.tools.fill.Fill;
-import dev.hevav.elytramix.scenarios.tools.heightlimit.HeightLimit;
-import dev.hevav.elytramix.scenarios.tools.playerride.PlayerRide;
-import dev.hevav.elytramix.scenarios.tools.randomteam.RandomTeam;
-import dev.hevav.elytramix.utils.ItemUtils;
+import ru.elytrium.elytramix.cui.ConfigurationTabCompleter;
+import ru.elytrium.elytramix.cui.ScenarioMixCommand;
+import ru.elytrium.elytramix.cui.essentials.*;
+import ru.elytrium.elytramix.events.PowerToolUse;
+import ru.elytrium.elytramix.scenarios.ScenarioCategory;
+import ru.elytrium.elytramix.scenarios.ScenarioManager;
+import ru.elytrium.elytramix.scenarios.gameplay.apocalypse.Apocalypse;
+import ru.elytrium.elytramix.scenarios.gameplay.blockshuffle.BlockShuffle;
+import ru.elytrium.elytramix.scenarios.gameplay.collideath.Collideath;
+import ru.elytrium.elytramix.scenarios.gameplay.lastsight.LastSight;
+import ru.elytrium.elytramix.scenarios.gameplay.lowestkiller.LowestKiller;
+import ru.elytrium.elytramix.scenarios.gameplay.nojump.NoJump;
+import ru.elytrium.elytramix.scenarios.gameplay.playerswap.PlayerSwap;
+import ru.elytrium.elytramix.scenarios.gameplay.pusher.Pusher;
+import ru.elytrium.elytramix.scenarios.gameplay.randomgive.RandomGive;
+import ru.elytrium.elytramix.scenarios.gameplay.security.Security;
+import ru.elytrium.elytramix.scenarios.gameplay.snowballs.Snowballs;
+import ru.elytrium.elytramix.scenarios.gameplay.snowfall.Snowfall;
+import ru.elytrium.elytramix.scenarios.gameplay.spiderpocalypse.Spiderpocalypse;
+import ru.elytrium.elytramix.scenarios.gameplay.throwtnt.ThrowTNT;
+import ru.elytrium.elytramix.scenarios.tools.autorespawn.AutoRespawn;
+import ru.elytrium.elytramix.scenarios.tools.autospectator.AutoSpectator;
+import ru.elytrium.elytramix.scenarios.tools.fightme.FightMe;
+import ru.elytrium.elytramix.scenarios.tools.fill.Fill;
+import ru.elytrium.elytramix.scenarios.tools.heightlimit.HeightLimit;
+import ru.elytrium.elytramix.scenarios.tools.playerride.PlayerRide;
+import ru.elytrium.elytramix.scenarios.tools.randomteam.RandomTeam;
+import ru.elytrium.elytramix.utils.ItemUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import ru.elytrium.elytramix.cui.essentials.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -44,6 +45,9 @@ public class Plugin extends JavaPlugin {
     public File powertoolFile;
     private FileConfiguration powertoolData;
 
+    private File messagesFile;
+    private FileConfiguration messagesData;
+
     @Override
     public void onEnable() {
         plugin = this;
@@ -52,7 +56,7 @@ public class Plugin extends JavaPlugin {
         this.getCommand(command).setTabCompleter(new ConfigurationTabCompleter());
 
         // Creating configuration files
-        createPowertoolFile();
+        createConfigs(this);
 
         // Essentials commands
         this.getCommand("bc").setExecutor(new Broadcast());
@@ -110,23 +114,31 @@ public class Plugin extends JavaPlugin {
         scenarioManager.addCategory(CATEGORY_ADMIN);
     }
 
-    public FileConfiguration powertoolData() {
-        return this.powertoolData;
-    }
+    public void createConfigs(Plugin plugin) {
+        powertoolFile = new File(plugin.getDataFolder(), "powertool.yml");
+        messagesFile = new File(plugin.getDataFolder(), "messages.yml");
 
-    private void createPowertoolFile() {
-        powertoolFile = new File(getDataFolder(), "powertool.yml");
         if (!powertoolFile.exists()) {
             powertoolFile.getParentFile().mkdirs();
-            saveResource("powertool.yml", false);
+            plugin.saveResource("powertool.yml", false);
+        }
+
+        if(!messagesFile.exists()){
+            powertoolFile.getParentFile().mkdirs();
+            plugin.saveResource("messages.yml", false);
         }
 
         powertoolData = new YamlConfiguration();
+        messagesData = new YamlConfiguration();
+
         try {
             powertoolData.load(powertoolFile);
+            messagesData.load(messagesFile);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
     }
 
+    public FileConfiguration getPowertoolConfig(){ return this.powertoolData; }
+    public FileConfiguration getMessagesConfig(){ return this.messagesData; }
 }
