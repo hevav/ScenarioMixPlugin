@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import ru.elytrium.elytramix.Plugin;
 import ru.elytrium.elytramix.gui.MenuHandler;
 import ru.elytrium.elytramix.scenarios.Scenario;
 import ru.elytrium.elytramix.scenarios.ScenarioManager;
@@ -13,6 +14,10 @@ import ru.elytrium.elytramix.utils.Parser;
 
 @SuppressWarnings("rawtypes")
 public class ScenarioMixCommand implements CommandExecutor {
+    private Plugin plugin;
+
+    public ScenarioMixCommand(Plugin plugin){ this.plugin = plugin; }
+
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
 
         if (strings.length == 0) {
@@ -34,7 +39,8 @@ public class ScenarioMixCommand implements CommandExecutor {
             if (checkScenario(scenario, commandSender)) {
                 Configuration configuration = scenario.getConfig(strings[1]);
                 if (configuration != null) {
-                    commandSender.sendMessage("Введите " + Parser.getConfigCommand(configuration));
+                    commandSender.sendMessage(plugin.getMessageString("scenariomix.unknown-arg")
+                            .replace("{command}", Parser.getConfigCommand(configuration)));
                 } else {
                     sendConfigsNames(scenario, commandSender);
                 }
@@ -48,9 +54,12 @@ public class ScenarioMixCommand implements CommandExecutor {
                 if (configuration != null) {
                     try {
                         configuration.setStringValue(strings[2]);
-                        commandSender.sendMessage(ChatColor.BLUE + "Теперь значение " + ChatColor.GOLD + configuration.getName() + ChatColor.BLUE + " у " + ChatColor.GOLD + scenario.getName() + ChatColor.BLUE + " равно " + ChatColor.BOLD + ChatColor.WHITE + configuration.value().toString());
+                        commandSender.sendMessage(plugin.getMessageString("scenariomix.config-edit")
+                                .replace("{scenario}", scenario.getName())
+                                .replace("{value}", configuration.value().toString()));
                     } catch (IllegalArgumentException e) {
-                        commandSender.sendMessage("Введите " + Parser.getConfigCommand(configuration));
+                        commandSender.sendMessage(plugin.getMessageString("scenariomix.unknown-arg")
+                                .replace("{command}", Parser.getConfigCommand(configuration)));
                     } catch (Exception e) {
                         commandSender.sendMessage(ChatColor.RED + e.getMessage());
                     }
@@ -67,12 +76,12 @@ public class ScenarioMixCommand implements CommandExecutor {
     private boolean checkScenario(Scenario scenario, CommandSender commandSender) {
         if (scenario != null) {
             if (!scenario.isConfigurable()) {
-                commandSender.sendMessage(ChatColor.RED + "У этого сценария нет возможных конфигураций");
+                commandSender.sendMessage(plugin.getMessageString("scenariomix.no-configuration"));
                 return false;
             } else
                 return true;
         }
-        commandSender.sendMessage(ChatColor.RED + "Вы ошиблись в названии сценария");
+        commandSender.sendMessage(plugin.getMessageString("scenariomix.unknown-scenario"));
         sendScenariosNames(commandSender);
         return false;
     }

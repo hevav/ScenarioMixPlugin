@@ -6,8 +6,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import ru.elytrium.elytramix.Plugin;
 
 public class Heal implements CommandExecutor {
+    private Plugin plugin;
+
+    public Heal(Plugin plugin){ this.plugin = plugin; }
+
     @Override
     public boolean onCommand(CommandSender commandSender,  Command command, String s, String[] strings) {
 
@@ -19,26 +24,26 @@ public class Heal implements CommandExecutor {
             Player p = (Player) commandSender;
             p.setHealth(20);
             p.setFoodLevel(20);
-            commandSender.sendMessage("§8§l[§5§lElytrium§8§l] §6Вы были исцелены");
+            commandSender.sendMessage(plugin.getMessageString("elytramix.heal-healed"));
         }
         if(strings.length == 1) {
             if(strings[0].equals("*")){
-                commandSender.sendMessage("§8§l[§5§lElytrium§8§l] §7Вы исцелили всех игроков!");
                 for(Player p:Bukkit.getOnlinePlayers()){
                     p.setHealth(20);
                     p.setFoodLevel(20);
-                    p.sendMessage("§8§l[§5§lElytrium§8§l] §6Вы были исцелены");
+                    p.sendMessage(plugin.getMessageString("elytramix.heal-healed"));
                 }
             } else {
                 Player p = Bukkit.getPlayer(strings[0]);
                 if(p == null) {
-                    commandSender.sendMessage("§8§l[§5§lElytrium§8§l] §7Игрок §c"+strings[0]+"§7не найден!");
+                    commandSender.sendMessage(plugin.getMessageString("not-found"));
                     return true;
                 }
                 p.setHealth(20);
                 p.setFoodLevel(20);
-                commandSender.sendMessage("§8§l[§5§lElytrium§8§l] §7Игрок §c"+p.getName()+" §7был исцелён");
-                p.sendMessage("§8§l[§5§lElytrium§8§l] §6Вы были исцелены");
+                commandSender.sendMessage(plugin.getMessageString("elytramix.heal-healed-target")
+                        .replace("{player}", p.getName()));
+                p.sendMessage(plugin.getMessageString("elytramix.heal-healed"));
             }
         }
 

@@ -5,14 +5,17 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import ru.elytrium.elytramix.Plugin;
 
 public class KickAll implements CommandExecutor {
+    private Plugin plugin;
+
+    public KickAll(Plugin plugin){ this.plugin = plugin; }
+
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
 
         String reason = String.join(" ", strings);
-
-        if(reason == null){ reason = "Вы были кикнуты с сервера! Не ведите себя плохо :)"; }
 
         reason = reason.replace("&", "\u00a7");
 
@@ -22,7 +25,7 @@ public class KickAll implements CommandExecutor {
             }
         }
 
-        commandSender.sendMessage("§8§l[§5§lElytrium§8§l] §7Всех игроков смело ветром...");
+        commandSender.sendMessage(plugin.getMessageString("elytramix.kickall"));
 
         return true;
     }

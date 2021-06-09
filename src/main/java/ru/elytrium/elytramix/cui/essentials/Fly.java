@@ -6,8 +6,13 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import ru.elytrium.elytramix.Plugin;
 
 public class Fly implements CommandExecutor {
+    private Plugin plugin;
+
+    public Fly(Plugin plugin){ this.plugin = plugin; }
+
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if(strings.length == 0) {
@@ -18,18 +23,18 @@ public class Fly implements CommandExecutor {
             Player p = (Player) commandSender;
             if(p.getAllowFlight()) {
                 p.setAllowFlight(false);
-                commandSender.sendMessage("§8§l[§5§lElytrium§8§l] §7Режим полёта §cвыключен§7!");
+                commandSender.sendMessage(plugin.getMessageString("elytramix.fly-disable"));
                 return true;
             }
             p.setAllowFlight(true);
-            commandSender.sendMessage("§8§l[§5§lElytrium§8§l] §7Режим полёта §cвключен§7!");
+            commandSender.sendMessage(plugin.getMessageString("elytramix.fly-enable"));
         }
 
 
         if(strings.length >= 1) {
             if (strings[0].equals("*")){
                 if(strings[1].equals("disable")){
-                    commandSender.sendMessage("§8§l[§5§lElytrium§8§l] §7Режим полёта у всех игроков §cвыключен§7!");
+                    commandSender.sendMessage(plugin.getMessageString("elytramix.fly-disable-multiple"));
                     for (Player p : Bukkit.getOnlinePlayers()){
                         if(p != commandSender){
                             p.setAllowFlight(false);
@@ -37,7 +42,7 @@ public class Fly implements CommandExecutor {
                     }
                     return true;
                 } else if(strings[1].equals("enable")){
-                    commandSender.sendMessage("§8§l[§5§lElytrium§8§l] §7Режим полёта у всех игроков §cвключен§7!");
+                    commandSender.sendMessage(plugin.getMessageString("elytramix.fly-enable-multiple"));
                     for (Player p : Bukkit.getOnlinePlayers()){
                         if(p != commandSender){
                             p.setAllowFlight(true);
@@ -52,19 +57,17 @@ public class Fly implements CommandExecutor {
                 Player p = Bukkit.getPlayer(name);
 
                 if(p == null){
-                    commandSender.sendMessage(ChatColor.RED+"Игрок "+name+" оффлайн!");
+                    commandSender.sendMessage(plugin.getMessageString("not-found"));
                     return true;
                 }
 
                 if(p.getAllowFlight()) {
                     p.setAllowFlight(false);
-                    commandSender.sendMessage("§8§l[§5§lElytrium§8§l] §7Режим полёта для игрока §f"+name+" §cвыключен§7!");
-                    p.sendMessage("§8§l[§5§lElytrium§8§l] §7Режим полёта §cвыключен§7!");
+                    p.sendMessage(plugin.getMessageString("elytramix.fly-disable"));
                     return true;
                 }
                 p.setAllowFlight(true);
-                commandSender.sendMessage("§8§l[§5§lElytrium§8§l] §7Режим полёта для игрока §f"+name+" §cвключен§7!");
-                p.sendMessage("§8§l[§5§lElytrium§8§l] §7Режим полёта §cвключен§7!");
+                p.sendMessage(plugin.getMessageString("elytramix.fly-enable"));
                 return true;
             }
         }

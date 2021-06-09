@@ -1,5 +1,10 @@
 package ru.elytrium.elytramix;
 
+import org.bukkit.Bukkit;
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
 import ru.elytrium.elytramix.cui.ConfigurationTabCompleter;
 import ru.elytrium.elytramix.cui.ScenarioMixCommand;
 import ru.elytrium.elytramix.cui.essentials.*;
@@ -28,12 +33,6 @@ import ru.elytrium.elytramix.scenarios.tools.heightlimit.HeightLimit;
 import ru.elytrium.elytramix.scenarios.tools.playerride.PlayerRide;
 import ru.elytrium.elytramix.scenarios.tools.randomteam.RandomTeam;
 import ru.elytrium.elytramix.utils.ItemUtils;
-import org.bukkit.Bukkit;
-import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
-import ru.elytrium.elytramix.cui.essentials.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,23 +51,23 @@ public class Plugin extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         loadScenarioManager();
-        this.getCommand(command).setExecutor(new ScenarioMixCommand());
+        this.getCommand(command).setExecutor(new ScenarioMixCommand(this));
         this.getCommand(command).setTabCompleter(new ConfigurationTabCompleter());
 
         // Creating configuration files
         createConfigs(this);
 
         // Essentials commands
-        this.getCommand("bc").setExecutor(new Broadcast());
-        this.getCommand("day").setExecutor(new Day());
-        this.getCommand("fly").setExecutor(new Fly());
-        this.getCommand("gm").setExecutor(new Gamemode());
-        this.getCommand("heal").setExecutor(new Heal());
-        this.getCommand("kickall").setExecutor(new KickAll());
-        this.getCommand("mobkill").setExecutor(new MobKill());
-        this.getCommand("night").setExecutor(new Night());
-        this.getCommand("rain").setExecutor(new Rain());
-        this.getCommand("sun").setExecutor(new Sun());
+        this.getCommand("bc").setExecutor(new Broadcast(this));
+        this.getCommand("day").setExecutor(new Day(this));
+        this.getCommand("fly").setExecutor(new Fly(this));
+        this.getCommand("gm").setExecutor(new Gamemode(this));
+        this.getCommand("heal").setExecutor(new Heal(this));
+        this.getCommand("kickall").setExecutor(new KickAll(this));
+        this.getCommand("mobkill").setExecutor(new MobKill(this));
+        this.getCommand("night").setExecutor(new Night(this));
+        this.getCommand("rain").setExecutor(new Rain(this));
+        this.getCommand("sun").setExecutor(new Sun(this));
         this.getCommand("powertool").setExecutor(new PowerTool(this));
 
         Bukkit.getPluginManager().registerEvents(new PowerToolUse(this), this);
@@ -141,4 +140,10 @@ public class Plugin extends JavaPlugin {
 
     public FileConfiguration getPowertoolConfig(){ return this.powertoolData; }
     public FileConfiguration getMessagesConfig(){ return this.messagesData; }
+
+    public String getMessageString(String path){
+        String s = this.getMessagesConfig().getString("prefix")+this.getMessagesConfig().getString(path);
+        s = s.replace("&", "\u00A7");
+        return s;
+    }
 }

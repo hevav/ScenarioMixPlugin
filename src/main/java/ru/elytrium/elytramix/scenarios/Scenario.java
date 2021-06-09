@@ -1,7 +1,6 @@
 package ru.elytrium.elytramix.scenarios;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
@@ -13,14 +12,18 @@ import ru.elytrium.elytramix.utils.ItemUtils;
 import java.util.*;
 @SuppressWarnings("rawtypes")
 public abstract class Scenario {
-    private final String name;
-    private final String configName;
-    private final String[] description;
+    private Plugin plugin;
+
+    public Scenario(Plugin plugin){ this.plugin = plugin; }
+
+    private String name;
+    private String configName;
+    private String[] description;
     private Material icon;
     private boolean started;
     private Map<BukkitRunnable, Integer> runnables;
-    private final Set<Listener> listeners;
-    private final Map<String, Configuration> configs;
+    private Set<Listener> listeners;
+    private Map<String, Configuration> configs;
 
     public Scenario(String name, String configName, String icon, String... description) {
         this.name = name;
@@ -40,7 +43,8 @@ public abstract class Scenario {
     }
 
     public void enable() {
-        Bukkit.broadcastMessage(ChatColor.GREEN + "Активирован сценарий " + ChatColor.BLUE + ChatColor.BOLD + name);
+        Bukkit.broadcastMessage(plugin.getMessageString("scenariomix.enable")
+                .replace("{scenario}", name));
         started = true;
         start();
         startListeners();
@@ -49,7 +53,8 @@ public abstract class Scenario {
 
     public void disable() {
         if (started) {
-            Bukkit.broadcastMessage(ChatColor.YELLOW + "Деактивирован сценарий " + ChatColor.RED + ChatColor.BOLD + name);
+            Bukkit.broadcastMessage(plugin.getMessageString("scenariomix.disable")
+                    .replace("{scenario}", name));
             started = false;
             stop();
             stopListeners();

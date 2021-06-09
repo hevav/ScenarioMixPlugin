@@ -8,8 +8,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
+import ru.elytrium.elytramix.Plugin;
 
 public class MobKill implements CommandExecutor {
+    private Plugin plugin;
+
+    public MobKill(Plugin plugin){ this.plugin = plugin; }
+
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if(!(commandSender instanceof Player)){
@@ -33,8 +38,10 @@ public class MobKill implements CommandExecutor {
             count++;
         }
 
-        sender.sendMessage("§8§l[§5§lElytrium§8§l] §7Было убрано §c"+count+
-                " §7сущностей в радиусе §c"+radius+" §7блоков");
+
+        sender.sendMessage(plugin.getMessageString("elytramix.mobkill")
+                .replace("{count}", String.valueOf(count))
+                .replace("{radius}", String.valueOf(radius)));
 
         return true;
     }

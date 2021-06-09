@@ -35,7 +35,8 @@ public class PowerTool implements CommandExecutor {
         if(strings.length == 0){
             plugin.getPowertoolConfig().set(uuid+"."+itemID, null);
             savePowertool();
-            commandSender.sendMessage("§8§l[§5§lElytrium§8§l] §7Все команды были сняты с предмета §c"+itemID);
+            commandSender.sendMessage(plugin.getMessageString("elytramix.powertool-clean")
+                    .replace("{item}", itemID));
             return true;
         }
 
@@ -49,8 +50,8 @@ public class PowerTool implements CommandExecutor {
             savePowertool();
         }
 
-        commandSender.sendMessage("§8§l[§5§lElytrium§8§l] §7Команда §c"+toolCommand+" " +
-                "§7была установлена на предмет §c"+itemStack.getType().name());
+        commandSender.sendMessage(plugin.getMessageString("elytramix.powertool-bind")
+                .replace("{item}", itemID));
 
         return true;
     }
