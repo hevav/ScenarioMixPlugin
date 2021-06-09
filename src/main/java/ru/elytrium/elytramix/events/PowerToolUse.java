@@ -55,13 +55,17 @@ public class PowerToolUse implements Listener {
 
             if(plugin.getPowertoolConfig().contains(uuid) && plugin.getPowertoolConfig().contains(uuid+"."+itemID)){
                 if(toolCommand.contains("{player}")){
-                    Player target = findPlayerInSight(damager);
+                    if(event.getEntity() instanceof Player){
+                        Player target = findPlayerInSight(damager);
 
-                    if(target != null){
-                        toolCommand = toolCommand.replace("{player}", target.getName());
+                        if(target != null){
+                            toolCommand = toolCommand.replace("{player}", target.getName());
+                        }
+                        toolCommand = toolCommand.replace("{world}", damager.getWorld().getName());
+                        damager.performCommand(toolCommand);
+                    } else {
+                        event.setCancelled(true);
                     }
-                    toolCommand = toolCommand.replace("{world}", damager.getWorld().getName());
-                    damager.performCommand(toolCommand);
                 } else {
                     event.setCancelled(true);
                 }
