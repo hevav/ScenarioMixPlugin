@@ -2,6 +2,7 @@ package ru.elytrium.elytramix.scenarios;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -19,16 +20,18 @@ public abstract class Scenario {
     private String name;
     private String configName;
     private String[] description;
+    private String type;
     private Material icon;
     private boolean started;
     private Map<BukkitRunnable, Integer> runnables;
     private Set<Listener> listeners;
     private Map<String, Configuration> configs;
 
-    public Scenario(String name, String configName, String icon, String... description) {
+    public Scenario(String name, String configName, String icon, String type, String... description) {
         this.name = name;
         this.configName = configName;
         this.description = description;
+        this.type = type;
         this.icon = ItemUtils.getMaterial(icon);
         this.started = false;
         this.runnables = new HashMap<>();
@@ -36,20 +39,24 @@ public abstract class Scenario {
         this.configs = new HashMap<>();
     }
 
-    public boolean toggle() {
+    protected Scenario() {
+    }
+
+    public boolean toggle(Player player) {
         if (started) disable();
-        else enable();
+        else enable(player);
         return started;
     }
 
-    public void enable() {
-        Bukkit.broadcastMessage(plugin.getMessageString("scenariomix.enable")
+    public void enable(Player player) {
+        Bukkit.broadcastMessage(Plugin.getInstance().getMessageString("scenariomix.enable")
                 .replace("{scenario}", name));
         started = true;
-        start();
+        start(player);
         startListeners();
         startBukkitRunnables();
     }
+
 
     public void disable() {
         if (started) {
@@ -62,7 +69,7 @@ public abstract class Scenario {
         }
     }
 
-    public abstract void start();
+    public abstract void start(Player player);
 
     public abstract void stop();
 
@@ -116,6 +123,10 @@ public abstract class Scenario {
 
     public String getName() {
         return name;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public List<String> getDescription() {

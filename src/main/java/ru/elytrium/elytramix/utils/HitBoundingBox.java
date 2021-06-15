@@ -114,8 +114,7 @@ public class HitBoundingBox {
 
         if (whichPlane != Plane.Z) {
             coord.setZ(origin.getZ() + maxT_whichPlane * direction.getZ());
-            if (coord.getZ() < minB.getZ() || coord.getZ() > maxB.getZ())
-                return false;
+            return !(coord.getZ() < minB.getZ()) && !(coord.getZ() > maxB.getZ());
         }
         else {
             coord.setZ(candidatePlane.getZ());
@@ -124,12 +123,12 @@ public class HitBoundingBox {
         return true;
     }
 
-    private static enum Quadrant {
-        LEFT, MIDDLE, RIGHT;
+    private enum Quadrant {
+        LEFT, MIDDLE, RIGHT
     }
 
-    private static enum Plane {
-        X, Y, Z;
+    private enum Plane {
+        X, Y, Z
     }
 
 }

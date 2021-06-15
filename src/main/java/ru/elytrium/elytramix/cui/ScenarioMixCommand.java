@@ -14,7 +14,7 @@ import ru.elytrium.elytramix.utils.Parser;
 
 @SuppressWarnings("rawtypes")
 public class ScenarioMixCommand implements CommandExecutor {
-    private Plugin plugin;
+    private final Plugin plugin;
 
     public ScenarioMixCommand(Plugin plugin){ this.plugin = plugin; }
 

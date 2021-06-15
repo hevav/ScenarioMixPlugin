@@ -4,6 +4,7 @@ import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
@@ -24,7 +25,7 @@ public class Spiderpocalypse extends Scenario {
     protected World world;
 
     public Spiderpocalypse() {
-        super("Паукопакалипсис", "spiderpocalypse", "SPIDER_EYE", "Дождь из пауков", "аллилуйя");
+        super("Паукопакалипсис", "spiderpocalypse", "SPIDER_EYE", "scenario","Дождь из пауков", "аллилуйя");
         addListener(new SpiderFallListener());
         addListener(new SpiderAttackListener());
         addListener(new BlockPlaceListener());
@@ -32,7 +33,7 @@ public class Spiderpocalypse extends Scenario {
     }
 
     @Override
-    public void start() {
+    public void start(Player player) {
 
         random = new Random();
         chunks = new HashSet<>();

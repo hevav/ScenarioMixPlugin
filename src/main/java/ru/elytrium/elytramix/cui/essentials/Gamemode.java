@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import ru.elytrium.elytramix.Plugin;
 
 public class Gamemode implements CommandExecutor {
-    private Plugin plugin;
+    private final Plugin plugin;
 
     public Gamemode(Plugin plugin){ this.plugin = plugin; }
 

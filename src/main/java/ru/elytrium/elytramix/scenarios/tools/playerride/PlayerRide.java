@@ -1,5 +1,6 @@
 package ru.elytrium.elytramix.scenarios.tools.playerride;
 
+import org.bukkit.entity.Player;
 import ru.elytrium.elytramix.scenarios.Scenario;
 import ru.elytrium.elytramix.scenarios.config.Configuration;
 
@@ -10,7 +11,7 @@ public class PlayerRide extends Scenario {
     private final Configuration<Boolean> killOnLeave = new Configuration<>("killOnLeave", false, "DIAMOND_SWORD", this, "Убивать когда кто-то встает");
 
     public PlayerRide() {
-        super("Погнали", "playerride", "SADDLE", "Теперь можно ездить на игроках");
+        super("Погнали", "playerride", "SADDLE", "tool","Теперь можно ездить на игроках");
         addConfig(allowMany);
         addConfig(allowLeave);
         addConfig(onlyTeam);
@@ -19,7 +20,7 @@ public class PlayerRide extends Scenario {
     }
 
     @Override
-    public void start() {
+    public void start(Player player) {
 
     }
 

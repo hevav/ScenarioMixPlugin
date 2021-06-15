@@ -33,7 +33,7 @@ public class ConfigurationsMenu extends Menu {
         configs = scenario.getConfigs();
     }
     @Override
-    public List<MenuItem> getItems() {
+    public List<MenuItem> getItems(Player player) {
         return scenario.getConfigs().values().stream().map((config) -> {
             ItemStack item = new ItemStack(config.getIcon());
             ItemMeta meta = item.getItemMeta();

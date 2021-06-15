@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import ru.elytrium.elytramix.Plugin;
 
 public class MobKill implements CommandExecutor {
-    private Plugin plugin;
+    private final Plugin plugin;
 
     public MobKill(Plugin plugin){ this.plugin = plugin; }
 

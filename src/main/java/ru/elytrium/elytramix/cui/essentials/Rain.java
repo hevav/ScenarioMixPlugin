@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 import ru.elytrium.elytramix.Plugin;
 
 public class Rain implements CommandExecutor {
-    private Plugin plugin;
+    private final Plugin plugin;
 
     public Rain(Plugin plugin){ this.plugin = plugin; }
 

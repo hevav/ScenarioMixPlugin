@@ -77,6 +77,13 @@
             <version>7.0.4</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>Bukkit</artifactId>
+            <version>1.16.5</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/spigot-1.16.5.jar</systemPath>
+        </dependency>
     </dependencies>
 
 </project>

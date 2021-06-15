@@ -8,6 +8,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import ru.elytrium.elytramix.Plugin;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,18 +27,16 @@ public abstract class Menu implements Listener {
         this.centered = centered;
         this.margin = margin;
 
-        renderInventory();
+        Bukkit.getPluginManager().registerEvents(this, Plugin.getInstance());
     }
 
     @EventHandler(ignoreCancelled = true)
     public void onInventoryClick(InventoryClickEvent event) {
         if (event.getWhoClicked() instanceof Player) {
-            Player player = (Player) event.getWhoClicked();
             String name = event.getView().getTitle();
 
             if (name.equals(this.name)) {
                 event.setCancelled(true);
-                player.closeInventory();
                 if (events.containsKey(event.getCurrentItem()))
                     events.get(event.getCurrentItem()).accept(event);
                 else
@@ -55,13 +54,14 @@ public abstract class Menu implements Listener {
         }
     }
 
-    public void open(Player player, boolean shouldRender) {
-        if (shouldRender) renderInventory();
+    public void open(Player player) {
+        renderInventory(player);
+        player.closeInventory();
         player.openInventory(inventory);
     }
 
-    private void renderInventory() {
-        List<MenuItem> toRender = getItems();
+    private void renderInventory(Player player) {
+        List<MenuItem> toRender = getItems(player);
         toRender.forEach(item -> events.put(item.getItemStack(), item.getEventConsumer()));
 
         int size = calculateSize(toRender.size() + (margin * 18));
@@ -79,6 +79,6 @@ public abstract class Menu implements Listener {
         return (int) (Math.ceil(itemsCount / (double) row) * row);
     }
 
-    public abstract List<MenuItem> getItems();
+    public abstract List<MenuItem> getItems(Player player);
     public abstract void onClick(InventoryInteractEvent event);
 }

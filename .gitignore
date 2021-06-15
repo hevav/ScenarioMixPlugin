@@ -19,6 +19,7 @@ gen
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+./spigot-1.16.5.jar
 
 # Generated files
 .idea/**/contentModel.xml

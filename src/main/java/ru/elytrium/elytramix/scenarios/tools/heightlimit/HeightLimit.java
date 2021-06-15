@@ -1,11 +1,12 @@
 package ru.elytrium.elytramix.scenarios.tools.heightlimit;
 
+import org.bukkit.entity.Player;
 import ru.elytrium.elytramix.scenarios.Scenario;
 import ru.elytrium.elytramix.scenarios.config.Configuration;
 
 public class HeightLimit extends Scenario {
     public HeightLimit() {
-        super("Ограничение высоты", "height_limit", "BEDROCK", "Устанавливает максимальную", "и минимальную высоту", "установки блоков");
+        super("Ограничение высоты", "height_limit", "BEDROCK", "tool","Устанавливает максимальную", "и минимальную высоту", "установки блоков");
         addConfig(max);
         addConfig(min);
         addConfig(ignoreCreative);
@@ -21,7 +22,7 @@ public class HeightLimit extends Scenario {
     private final Configuration<Boolean> allowBreak = new Configuration<>("allow_break", false, "IRON_PICKAXE", this, "Разрешает ломать", "на любой высоте");
 
     @Override
-    public void start() {
+    public void start(Player player) {
     }
 
     @Override

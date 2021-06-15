@@ -1,6 +1,7 @@
 package ru.elytrium.elytramix.scenarios.gameplay.randomgive;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import ru.elytrium.elytramix.Plugin;
 import ru.elytrium.elytramix.scenarios.Scenario;
@@ -8,7 +9,7 @@ import ru.elytrium.elytramix.scenarios.config.Configuration;
 
 public class RandomGive extends Scenario {
     public RandomGive() {
-        super("Рандомная выдача предметов", "random_give", "DIAMOND", "Выдает определенное количество рандомных блоков", "за определенное время и из определенного", "списка (по умолчанию все блоки и предметы)");
+        super("Рандомная выдача предметов", "random_give", "DIAMOND", "scenario","Выдает определенное количество рандомных блоков", "за определенное время и из определенного", "списка (по умолчанию все блоки и предметы)");
         addConfig(block_limit);
         addConfig(interval);
         addConfig(middle_multiplier);

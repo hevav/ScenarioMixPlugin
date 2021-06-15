@@ -14,7 +14,7 @@ import java.util.List;
 
 public class RandomTeam extends Scenario {
     public RandomTeam() {
-        super("Рандомные команды", "random_team", "SKULL_ITEM", "Рандомно делит игроков на команды,", "Количество игроков в команде регулируется командой", "/mix random_team player_limit <лимит>");
+        super("Рандомные команды", "random_team", "SKULL_ITEM", "tool", "Рандомно делит игроков на команды,", "Количество игроков в команде регулируется командой", "/mix random_team player_limit <лимит>");
         addConfig(player_limit);
         addConfig(team_prefix);
     }
@@ -22,7 +22,7 @@ public class RandomTeam extends Scenario {
     private final Configuration<Integer> player_limit = new Configuration<>("player_limit", 24, "SKULL_ITEM", this, "Игроков в одной команде");
     private final Configuration<String> team_prefix = new Configuration<>("team_prefix", "rt", "COMMAND", this, "Префикс в команде Minecraft");
 
-    public void start() {
+    public void start(Player player) {
         List<List<String>> teams = getTeams(new ArrayList<>(Bukkit.getOnlinePlayers()), getPlayerLimit());
 
         for (int i = 0; i < teams.size(); i++) {

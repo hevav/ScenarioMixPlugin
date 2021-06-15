@@ -2,6 +2,7 @@ package ru.elytrium.elytramix.scenarios.gameplay.snowfall;
 
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 import org.bukkit.material.MaterialData;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
@@ -20,11 +21,11 @@ public class Snowfall extends Scenario {
     protected World world;
 
     public Snowfall() {
-        super("Снегопад", "snowfall", "SNOW_BLOCK", "Запускает сильный снегопад");
+        super("Снегопад", "snowfall", "SNOW_BLOCK", "scenario","Запускает сильный снегопад");
     }
 
     @Override
-    public void start() {
+    public void start(Player player) {
         percentage = 0.05F;
         random = new Random();
         chunks = new HashMap<>();

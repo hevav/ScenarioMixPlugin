@@ -16,7 +16,7 @@ public class MainMenu extends Menu {
     }
 
     @Override
-    public List<MenuItem> getItems() {
+    public List<MenuItem> getItems(Player player) {
         return ScenarioManager.getInstance().getCategories().stream().map(category ->
             new MenuItem(
                 category.getDisplayMaterial(),

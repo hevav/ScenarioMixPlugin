@@ -14,7 +14,7 @@ import ru.elytrium.elytramix.Plugin;
 import ru.elytrium.elytramix.utils.HitBoundingBox;
 
 public class PowerToolUse implements Listener {
-    private Plugin plugin;
+    private final Plugin plugin;
 
     public PowerToolUse(Plugin plugin){ this.plugin = plugin; }
 

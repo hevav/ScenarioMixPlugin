@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 import ru.elytrium.elytramix.Plugin;
 
 public class Night implements CommandExecutor {
-    private Plugin plugin;
+    private final Plugin plugin;
 
     public Night(Plugin plugin){ this.plugin = plugin; }
 

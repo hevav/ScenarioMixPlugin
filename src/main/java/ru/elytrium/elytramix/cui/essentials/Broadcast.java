@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import ru.elytrium.elytramix.Plugin;
 
 public class Broadcast implements CommandExecutor {
-    private Plugin plugin;
+    private final Plugin plugin;
 
     public Broadcast(Plugin plugin){ this.plugin = plugin; }
 

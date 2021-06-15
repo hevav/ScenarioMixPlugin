@@ -1,12 +1,13 @@
 package ru.elytrium.elytramix.scenarios.gameplay.throwtnt;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import ru.elytrium.elytramix.scenarios.Scenario;
 import ru.elytrium.elytramix.scenarios.config.Configuration;
 
 public class ThrowTNT extends Scenario {
     public ThrowTNT() {
-        super("Выброс TNT", "throw_tnt", "TNT", "Возможность выбрасывать TNT", "определенным предметом", "Задача игроков - не", "попасть в воду.");
+        super("Выброс TNT", "throw_tnt", "TNT", "scenario","Возможность выбрасывать TNT", "определенным предметом", "Задача игроков - не", "попасть в воду.");
         addConfig(item_id);
         addConfig(delay);
         addConfig(velocity);
@@ -22,7 +23,7 @@ public class ThrowTNT extends Scenario {
     private final Configuration<Integer> kill_radius = new Configuration<>("kill_radius", 3, "BARRIER", this, "Радиус работы TNT");
     private final Configuration<Integer> player_velocity = new Configuration<>("player_velocity", 3, "FEATHER", this, "Скорость игрока при отбросе");
 
-    public void start() {
+    public void start(Player player) {
 
     }
 

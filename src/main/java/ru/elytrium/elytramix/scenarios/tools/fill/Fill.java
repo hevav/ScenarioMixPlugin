@@ -10,7 +10,7 @@ import ru.elytrium.elytramix.scenarios.config.Configuration;
 
 public class Fill extends Scenario {
     public Fill() {
-        super("Заполнение", "fill", "LAVA_BUCKET", "Постепенно заполняет мир", "выбранным блоком");
+        super("Заполнение", "fill", "LAVA_BUCKET", "tool","Постепенно заполняет мир", "выбранным блоком");
         addConfig(material);
         addConfig(delay);
         addConfig(amount);
@@ -28,7 +28,7 @@ public class Fill extends Scenario {
     private BukkitRunnable task = null;
 
     @Override
-    public void start() {
+    public void start(Player player) {
         task = new BukkitRunnable() {
             @Override
             public void run() {
@@ -51,7 +51,7 @@ public class Fill extends Scenario {
                     return;
                 }
                 fill(world, borderSize);
-                start();
+                start(player);
             }
         };
         task.runTaskLater(Plugin.plugin, delay.value() * 20);

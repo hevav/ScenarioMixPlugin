@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class PowerTool implements CommandExecutor {
 
-    private Plugin plugin;
+    private final Plugin plugin;
 
     public PowerTool(Plugin plugin){ this.plugin = plugin; }
 

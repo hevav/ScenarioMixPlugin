@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 import org.bukkit.material.MaterialData;
 import org.bukkit.scheduler.BukkitRunnable;
 import ru.elytrium.elytramix.Plugin;
@@ -19,14 +20,14 @@ public class Apocalypse extends Scenario {
     private BukkitRunnable task;
 
     public Apocalypse() {
-        super("Апокалипсис", "apocalypse", "MAGMA", "Запускает метеоритный дождь");
+        super("Апокалипсис", "apocalypse", "MAGMA", "scenario","Запускает метеоритный дождь");
         addListener(new MeteorFallListener());
         addListener(new MeteorSpawner());
         addConfig(period);
     }
 
     @Override
-    public void start() {
+    public void start(Player player) {
         updateTask();
     }
 

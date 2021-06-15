@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import ru.elytrium.elytramix.Plugin;
 
 public class KickAll implements CommandExecutor {
-    private Plugin plugin;
+    private final Plugin plugin;
 
     public KickAll(Plugin plugin){ this.plugin = plugin; }
 
