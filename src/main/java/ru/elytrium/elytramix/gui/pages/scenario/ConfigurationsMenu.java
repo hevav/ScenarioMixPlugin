@@ -62,6 +62,6 @@ public class ConfigurationsMenu extends Menu {
 
     @Override
     public void onClick(InventoryInteractEvent event) {
-        previous.open((Player) event.getWhoClicked(), true);
+        previous.open((Player) event.getWhoClicked());
     }
 }

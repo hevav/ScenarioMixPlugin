@@ -14,6 +14,6 @@ class DeathListener implements Listener {
             public void run() {
                 event.getEntity().spigot().respawn();
             }
-        }.runTaskLater(Plugin.plugin, 1);
+        }.runTaskLater(Plugin.getInstance(), 1);
     }
 }

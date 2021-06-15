@@ -22,8 +22,8 @@ public class RandomGive extends Scenario {
 
     private BukkitRunnable runnable = new GiveRunnable(this);
 
-    public void start() {
-        runnable.runTaskTimer(Plugin.plugin, 0L, interval.getValue() * 20L);
+    public void start(Player player) {
+        runnable.runTaskTimer(Plugin.getInstance(), 0L, interval.getValue() * 20L);
     }
 
     public void stop() {

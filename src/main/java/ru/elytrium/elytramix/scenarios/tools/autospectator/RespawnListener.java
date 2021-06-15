@@ -17,7 +17,7 @@ class RespawnListener implements Listener {
                 public void run() {
                     event.getPlayer().setGameMode(GameMode.SPECTATOR);
                 }
-            }.runTask(Plugin.plugin);
+            }.runTask(Plugin.getInstance());
         }
     }
 }

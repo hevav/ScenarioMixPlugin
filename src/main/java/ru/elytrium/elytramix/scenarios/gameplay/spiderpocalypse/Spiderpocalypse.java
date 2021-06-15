@@ -46,7 +46,7 @@ public class Spiderpocalypse extends Scenario {
                     startChunk(chunk);
                 }
             }
-        }).runTaskTimer(Plugin.plugin, 0L, 200L);
+        }).runTaskTimer(Plugin.getInstance(), 0L, 200L);
     }
 
     @Override
@@ -87,7 +87,7 @@ public class Spiderpocalypse extends Scenario {
                     ++counter;
                 }
             }
-        }.runTaskTimer(Plugin.plugin, 0L, 1L);
+        }.runTaskTimer(Plugin.getInstance(), 0L, 1L);
 
     }
 

@@ -8,34 +8,37 @@ import java.util.NoSuchElementException;
 
 public class Parser {
     public static Boolean parseBoolean(String string) throws IllegalArgumentException {
-        if (string.equalsIgnoreCase("true") || string.equalsIgnoreCase("allow"))
+        if (string.equalsIgnoreCase("true") || string.equalsIgnoreCase("allow") || string.equalsIgnoreCase("yes") || string.equalsIgnoreCase("вкл"))
             return true;
-        if (string.equalsIgnoreCase("false") || string.equalsIgnoreCase("falce") || string.equalsIgnoreCase("none") || string.equalsIgnoreCase("deny"))
+        if (string.equalsIgnoreCase("false") || string.equalsIgnoreCase("none") || string.equalsIgnoreCase("deny") || string.equalsIgnoreCase("no") || string.equalsIgnoreCase("выкл"))
             return false;
-        throw new IllegalArgumentException("Ничего не понял");
+        throw new IllegalArgumentException(string);
     }
 
     public static Material parseMaterial(String string) throws NoSuchElementException {
-        Material material = Material.getMaterial(string.toUpperCase());
+        Material material = ItemUtils.getMaterial(string.toUpperCase());
         if (material != null) return material;
-        else throw new NoSuchElementException("Такого материала нет");
+        else throw new NoSuchElementException(string);
     }
 
     @SuppressWarnings("rawtypes")
     public static String getConfigCommand(Configuration configuration) {
-        return "/" + Plugin.command + " " + configuration.getScenario().getConfigName() + " " + configuration.getName() + " <" + createTypeMessage(configuration) + ">";
+        return "/" + Plugin.getCommand() + " " + configuration.getScenario().getConfigName() + " " + configuration.getName() + " <" + createTypeMessage(configuration) + ">";
     }
 
     @SuppressWarnings("rawtypes")
     public static String createTypeMessage(Configuration configuration) {
-        if (configuration.getValueType() == ValueType.INTEGER)
-            return "целое число";
-        if (configuration.getValueType() == ValueType.BOOLEAN)
-            return "true/false"; // или allow/deny
-        if (configuration.getValueType() == ValueType.MATERIAL)
-            return "тип";
-        if (configuration.getValueType() == ValueType.STRING)
-            return "текст";
-        return "значение";
+        switch (configuration.getValueType()) {
+            case INTEGER:
+                return Plugin.getInstance().getMessageString("scenariomix.args.integer");
+            case BOOLEAN:
+                return Plugin.getInstance().getMessageString("scenariomix.args.boolean");
+            case MATERIAL:
+                return Plugin.getInstance().getMessageString("scenariomix.args.material");
+            case STRING:
+                return Plugin.getInstance().getMessageString("scenariomix.args.string");
+            default:
+                return Plugin.getInstance().getMessageString("scenariomix.args.default");
+        }
     }
 }

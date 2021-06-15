@@ -16,7 +16,7 @@ public class MenuHandler {
         this.mainMenu = new MainMenu();
         ScenarioManager scenarioManager = ScenarioManager.getInstance();
         scenarioManager.getCategories().forEach(
-                category -> scenarioMenus.put(category.getName(), new ScenarioMenu(category.getName()))
+                category -> scenarioMenus.put(category.getName(), new ScenarioMenu(mainMenu, category.getName()))
         );
     }
 

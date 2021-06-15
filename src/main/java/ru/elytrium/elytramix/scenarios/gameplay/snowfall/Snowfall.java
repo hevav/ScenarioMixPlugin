@@ -45,7 +45,7 @@ public class Snowfall extends Scenario {
                 }
 
             }
-        }).runTaskTimer(Plugin.plugin, 0L, 1200L);
+        }).runTaskTimer(Plugin.getInstance(), 0L, 1200L);
     }
 
     @Override
@@ -93,7 +93,7 @@ public class Snowfall extends Scenario {
                     ++counter;
                 }
             }
-        }.runTaskTimer(Plugin.plugin, 0L, 1L);
+        }.runTaskTimer(Plugin.getInstance(), 0L, 1L);
 
     }
 

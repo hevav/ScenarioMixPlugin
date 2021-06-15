@@ -57,6 +57,6 @@ public class Apocalypse extends Scenario {
 
     private void updateTask() {
         task = new MeteorSpawnerRunnable();
-        task.runTaskLater(Plugin.plugin, period.getValue());
+        task.runTaskLater(Plugin.getInstance(), period.getValue());
     }
 }

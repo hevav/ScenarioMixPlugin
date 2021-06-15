@@ -18,14 +18,14 @@ class KillerRunnable implements Runnable {
             public void run() {
                 Bukkit.broadcastMessage(ChatColor.YELLOW + "2...");
             }
-        }.runTaskLater(Plugin.plugin, 20);
+        }.runTaskLater(Plugin.getInstance(), 20);
 
         new BukkitRunnable() {
             @Override
             public void run() {
                 Bukkit.broadcastMessage(ChatColor.RED + "1...");
             }
-        }.runTaskLater(Plugin.plugin, 40);
+        }.runTaskLater(Plugin.getInstance(), 40);
 
         new BukkitRunnable() {
             @Override
@@ -44,7 +44,7 @@ class KillerRunnable implements Runnable {
                     Bukkit.broadcastMessage(ChatColor.YELLOW + player.getName() + " оказался ниже всех. Его высота - " + ChatColor.RED + (int) lowest);
                 } else Bukkit.broadcastMessage(ChatColor.YELLOW + "Все мертвы...");
             }
-        }.runTaskLater(Plugin.plugin, 60);
+        }.runTaskLater(Plugin.getInstance(), 60);
 
     }
 }

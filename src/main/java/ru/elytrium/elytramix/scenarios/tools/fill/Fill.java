@@ -54,7 +54,7 @@ public class Fill extends Scenario {
                 start(player);
             }
         };
-        task.runTaskLater(Plugin.plugin, delay.value() * 20);
+        task.runTaskLater(Plugin.getInstance(), delay.value() * 20);
     }
 
     @Override

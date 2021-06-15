@@ -15,8 +15,8 @@ public class LowestKiller extends Scenario {
     }
 
     @Override
-    public void start() {
-       task = Bukkit.getScheduler().runTaskTimer(Plugin.plugin, new KillerRunnable(), 20, 1200);
+    public void start(Player player) {
+       task = Bukkit.getScheduler().runTaskTimer(Plugin.getInstance(), new KillerRunnable(), 20, 1200);
     }
 
     @Override

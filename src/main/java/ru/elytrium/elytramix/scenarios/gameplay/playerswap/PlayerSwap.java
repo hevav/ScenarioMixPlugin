@@ -16,8 +16,8 @@ public class PlayerSwap extends Scenario {
 
     private BukkitRunnable runnable = new SwapRunnable();
 
-    public void start() {
-        runnable.runTaskTimer(Plugin.plugin, 0L, interval.getValue() * 20L);
+    public void start(Player player) {
+        runnable.runTaskTimer(Plugin.getInstance(), 0L, interval.getValue() * 20L);
     }
 
     public void stop() {

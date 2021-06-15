@@ -20,10 +20,10 @@ public class MainMenu extends Menu {
         return ScenarioManager.getInstance().getCategories().stream().map(category ->
             new MenuItem(
                 category.getDisplayMaterial(),
-                category.getDisplayName(),
+                category.getName(),
                 (e) -> MenuHandler.getInstance()
                     .getScenarioMenu(category.getName())
-                    .open((Player) e.getWhoClicked(), true))
+                    .open((Player) e.getWhoClicked()))
         ).collect(Collectors.toList());
     }
 

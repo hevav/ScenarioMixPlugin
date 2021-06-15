@@ -7,23 +7,17 @@ import java.util.Map;
 
 public class ScenarioCategory {
     private final String name;
-    private final String displayName;
     private final Material displayMaterial;
     private final Map<String, Scenario> scenarios;
 
-    public ScenarioCategory(String name, String displayName, Material displayMaterial) {
+    public ScenarioCategory(String name, Material displayMaterial) {
         this.name = name;
-        this.displayName = displayName;
         this.displayMaterial = displayMaterial;
         this.scenarios = new HashMap<>();
     }
 
     public final String getName() {
         return name;
-    }
-
-    public final String getDisplayName() {
-        return displayName;
     }
 
     public final Material getDisplayMaterial() {

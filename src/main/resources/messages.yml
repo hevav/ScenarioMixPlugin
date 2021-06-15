@@ -28,3 +28,9 @@ scenariomix:
   unknown-arg: 'Введите &c{command}'
   no-configuration: '&cУ этого сценария нет возможных конфигураций'
   unknown-scenario: '&cСценарий не найден'
+  args:
+    integer: 'целое число'
+    boolean: 'да/нет (true/false)'
+    material: 'ID блока'
+    string: 'строка текста'
+    default: 'значение'

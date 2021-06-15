@@ -13,10 +13,6 @@ import ru.elytrium.elytramix.utils.ItemUtils;
 import java.util.*;
 @SuppressWarnings("rawtypes")
 public abstract class Scenario {
-    private Plugin plugin;
-
-    public Scenario(Plugin plugin){ this.plugin = plugin; }
-
     private String name;
     private String configName;
     private String[] description;
@@ -60,7 +56,7 @@ public abstract class Scenario {
 
     public void disable() {
         if (started) {
-            Bukkit.broadcastMessage(plugin.getMessageString("scenariomix.disable")
+            Bukkit.broadcastMessage(Plugin.getInstance().getMessageString("scenariomix.disable")
                     .replace("{scenario}", name));
             started = false;
             stop();
@@ -86,7 +82,7 @@ public abstract class Scenario {
     }
 
     private void startListeners() {
-        listeners.forEach((listener) -> Bukkit.getPluginManager().registerEvents(listener, Plugin.plugin));
+        listeners.forEach((listener) -> Bukkit.getPluginManager().registerEvents(listener, Plugin.getInstance()));
     }
 
     private void stopListeners() {
@@ -94,7 +90,7 @@ public abstract class Scenario {
     }
 
     private void startBukkitRunnables() {
-        runnables.forEach((runnable, period) -> runnable.runTaskTimer(Plugin.plugin, 20L, (long) period));
+        runnables.forEach((runnable, period) -> runnable.runTaskTimer(Plugin.getInstance(), 20L, (long) period));
     }
 
     private void stopBukkitRunnables() {

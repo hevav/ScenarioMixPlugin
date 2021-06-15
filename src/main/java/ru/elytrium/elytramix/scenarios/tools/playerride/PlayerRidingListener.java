@@ -47,13 +47,13 @@ public class PlayerRidingListener implements Listener {
     public void onLeave(EntityDismountEvent event) {
         if (event.getEntity() instanceof Player && event.getDismounted() instanceof Player) {
             if (!scenario.isAllowLeave()) {
-                Bukkit.getScheduler().scheduleSyncDelayedTask(Plugin.plugin, () -> {
+                Bukkit.getScheduler().scheduleSyncDelayedTask(Plugin.getInstance(), () -> {
                     if (!event.getEntity().isInsideVehicle())
                         event.getDismounted().addPassenger(event.getEntity());
                 });
             }
             else if (scenario.needKillOnLeave()){
-                Bukkit.getScheduler().scheduleSyncDelayedTask(Plugin.plugin, () -> {
+                Bukkit.getScheduler().scheduleSyncDelayedTask(Plugin.getInstance(), () -> {
                     if (!event.getEntity().isInsideVehicle()){
                         ((Player) event.getEntity()).setHealth(0d);
                         ((Player) event.getDismounted()).setHealth(0d);

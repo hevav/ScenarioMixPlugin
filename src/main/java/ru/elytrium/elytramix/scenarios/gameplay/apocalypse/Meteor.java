@@ -31,6 +31,6 @@ public class Meteor {
                 }
             }
         };
-        runnable.runTaskTimer(Plugin.plugin, 0, 1);
+        runnable.runTaskTimer(Plugin.getInstance(), 0, 1);
     }
 }

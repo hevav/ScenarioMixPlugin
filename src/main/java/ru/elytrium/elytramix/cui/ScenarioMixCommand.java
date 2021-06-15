@@ -22,7 +22,7 @@ public class ScenarioMixCommand implements CommandExecutor {
 
         if (strings.length == 0) {
             if (commandSender instanceof Player) {
-                MenuHandler.getInstance().getMainMenu().open(((Player) commandSender), false);
+                MenuHandler.getInstance().getMainMenu().open(((Player) commandSender));
             } else commandSender.sendMessage(ChatColor.RED + "Эта команда доступна только для игроков");
             return true;
         }
