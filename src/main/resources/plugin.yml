@@ -2,7 +2,7 @@ name: ElytraMix
 version: ${project.version}
 authors: [7isenko, hevav, urFate] # Fork of ScenarioMix by 7isenko
 api-version: 1.15 # 1.16 breaks compatibility with 1.15; 1.15 allows to get 1.16 items in Material.values()
-main: ru.elytrium.elytramix.Plugin
+main: net.elytrium.elytramix.Plugin
 depend:
   - WorldGuard
 
