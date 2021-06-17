@@ -22,10 +22,6 @@ public class WorldGuardUtil {
         RegionManager mgr = container.get(BukkitAdapter.adapt(loc.getWorld()));
         List<String> regions = mgr.getApplicableRegionsIDs(BlockVector3.at(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()));
 
-        for(String rg: regions){
-            Bukkit.broadcastMessage(rg);
-        }
-
         try{
             return mgr.getRegion(regions.get(0));
         } catch(IndexOutOfBoundsException e){
