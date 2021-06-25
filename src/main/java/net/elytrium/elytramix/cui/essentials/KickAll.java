@@ -12,15 +12,11 @@ public class KickAll implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
 
-        String reason = String.join(" ", strings);
-
-        reason = reason.replace("&", "\u00a7");
-
-        for(Player p: Bukkit.getOnlinePlayers()){
-            if(p != commandSender){
-                p.kickPlayer(reason);
+        Bukkit.getOnlinePlayers().forEach(player -> {
+            if(player != commandSender){
+                player.kickPlayer(Plugin.getInstance().getMessageString("elytramix.kickall"));
             }
-        }
+        });
 
         commandSender.sendMessage(Plugin.getInstance().getMessageString("elytramix.kickall"));
 
