@@ -64,6 +64,15 @@ commands:
     description: Устанавливает солнечную погоду
     usage: /sun
     permission: elytramix.tools
+  tpall:
+    description: Телепортирует всех игроков к вам
+    usage: /tpall
+    permission: elytramix.tools
+  tphere:
+    description: Телепортирует игрока к вам
+    usage: /s <Игрок>
+    permission: elytramix.tools
+    aliases: [s]
 
 
 permissions:
