@@ -76,6 +76,8 @@ public class Plugin extends JavaPlugin {
         this.getCommand("rain").setExecutor(new Rain());
         this.getCommand("sun").setExecutor(new Sun());
         this.getCommand("powertool").setExecutor(new PowerTool());
+        this.getCommand("tpall").setExecutor(new TeleportAll());
+        this.getCommand("tphere").setExecutor(new TeleportHere());
 
         Bukkit.getPluginManager().registerEvents(new PowerToolUse(this), this);
     }
