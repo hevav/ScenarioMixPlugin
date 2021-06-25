@@ -1,0 +1,38 @@
+# Конфигурация сообщений и строк ElytraMix
+
+prefix: '&5&lElytrium |=> &f'
+not-found: '&cУказанный игрок не найден'
+
+
+elytramix:
+  powertool-clean: 'Все команды были сняты с предмета &c{item}'
+  powertool-bind: 'Свойства предмета &c{item} &fобновлены'
+  heal-healed: 'Вы были исцелены'
+  heal-healed-target: 'Игрок &c{player} &fбыл исцелён'
+  fly-enable: 'Режим полёта &cвключен'
+  fly-disable: 'Режим полёта &cвыключен'
+  fly-enable-multiple: 'Режим полёта у всех игроков &cвключен'
+  fly-disable-multiple: 'Режим полёта у всех игроков &cвыключен'
+  gamemode-change: 'Ваш игровой режим изменён на &c{mode}'
+  gamemode-change-multiple: 'Игровой режим всех игроков изменён'
+  day: 'Установлено дневное время суток в измерении &c{world}'
+  night: 'Установлено ночное время суток в измерении &c{world}'
+  sun: 'Установлена &cсолнечная &fпогода в измерении &c{world}'
+  rain: 'Установлена &cдождливая &fпогода в измерении &c{world}'
+  mobkill: 'Было убрано &c{count} &fсущностей в радиусе &c{radius} &fблоков'
+  kickall: 'Всех игроков смело ветром...'
+  tpall: 'Все игроки были телепортированы к вам'
+  tphere: 'Игрок &c{player} &fбыл телепортирован к вам'
+scenariomix:
+  enable: 'Активирован сценарий &c{scenario}'
+  disable: 'Деактивирован сценарий &c{scenario}'
+  config-edit: 'Теперь значение у &e{scenario} &fравно &c{value}'
+  unknown-arg: 'Введите &c{command}'
+  no-configuration: '&cУ этого сценария нет возможных конфигураций'
+  unknown-scenario: '&cСценарий не найден'
+  args:
+    integer: 'целое число'
+    boolean: 'да/нет (true/false)'
+    material: 'ID блока'
+    string: 'строка текста'
+    default: 'значение'

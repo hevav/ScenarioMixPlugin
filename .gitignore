@@ -2,8 +2,9 @@
 ### Example user template template
 ### Example user template
 
+.*
 # IntelliJ project files
-.idea
+.idea/
 *.iml
 out
 gen
@@ -13,10 +14,12 @@ gen
 
 # User-specific stuff
 .idea/**/workspace.xml
+.idea/**/discord.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+./spigot-1.16.5.jar
 
 # Generated files
 .idea/**/contentModel.xml
@@ -38,14 +41,14 @@ gen
 # When using Gradle or Maven with auto-import, you should exclude module files,
 # since they will be recreated, and may cause churn.  Uncomment if using
 # auto-import.
-# .idea/artifacts
-# .idea/compiler.xml
-# .idea/jarRepositories.xml
-# .idea/modules.xml
-# .idea/*.iml
-# .idea/modules
-# *.iml
-# *.ipr
+.idea/artifacts
+.idea/compiler.xml
+.idea/jarRepositories.xml
+.idea/modules.xml
+.idea/*.iml
+.idea/modules
+*.iml
+*.ipr
 
 # CMake
 cmake-build-*/
@@ -108,3 +111,4 @@ hs_err_pid*
 .idea/workspace.xml
 target/
 /.idea/**
+/.idea/

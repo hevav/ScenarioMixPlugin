@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.7isenko</groupId>
-    <artifactId>scenariomix</artifactId>
-    <version>1.1.0</version>
+    <groupId>net.elytrium.elytramix</groupId>
+    <artifactId>ElytraMix</artifactId>
+    <version>1.2</version>
     <packaging>jar</packaging>
 
-    <name>ScenarioMix</name>
+    <name>ElytraMix</name>
 
     <properties>
         <java.version>1.8</java.version>
@@ -58,14 +58,31 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>sk89q-repo</id>
+            <url>https://maven.enginehub.org/repo/</url>
+        </repository>
     </repositories>
 
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.16.4-R0.1-SNAPSHOT</version>
+            <version>1.16.5-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sk89q.worldguard</groupId>
+            <artifactId>worldguard-bukkit</artifactId>
+            <version>7.0.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>Bukkit</artifactId>
+            <version>1.16.5</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/spigot-1.16.5.jar</systemPath>
         </dependency>
     </dependencies>
 
