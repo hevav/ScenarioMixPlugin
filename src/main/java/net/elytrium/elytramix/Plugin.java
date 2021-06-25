@@ -62,20 +62,20 @@ public class Plugin extends JavaPlugin {
         this.getCommand(command).setTabCompleter(new ConfigurationTabCompleter());
 
         // Creating configuration files
-        createConfigs(this);
+        createConfigs();
 
         // Essentials commands
-        this.getCommand("bc").setExecutor(new Broadcast(this));
-        this.getCommand("day").setExecutor(new Day(this));
-        this.getCommand("fly").setExecutor(new Fly(this));
-        this.getCommand("gm").setExecutor(new Gamemode(this));
-        this.getCommand("heal").setExecutor(new Heal(this));
-        this.getCommand("kickall").setExecutor(new KickAll(this));
-        this.getCommand("mobkill").setExecutor(new MobKill(this));
-        this.getCommand("night").setExecutor(new Night(this));
-        this.getCommand("rain").setExecutor(new Rain(this));
-        this.getCommand("sun").setExecutor(new Sun(this));
-        this.getCommand("powertool").setExecutor(new PowerTool(this));
+        this.getCommand("bc").setExecutor(new Broadcast());
+        this.getCommand("day").setExecutor(new Day());
+        this.getCommand("fly").setExecutor(new Fly());
+        this.getCommand("gm").setExecutor(new Gamemode());
+        this.getCommand("heal").setExecutor(new Heal());
+        this.getCommand("kickall").setExecutor(new KickAll());
+        this.getCommand("mobkill").setExecutor(new MobKill());
+        this.getCommand("night").setExecutor(new Night());
+        this.getCommand("rain").setExecutor(new Rain());
+        this.getCommand("sun").setExecutor(new Sun());
+        this.getCommand("powertool").setExecutor(new PowerTool());
 
         Bukkit.getPluginManager().registerEvents(new PowerToolUse(this), this);
     }
@@ -130,18 +130,18 @@ public class Plugin extends JavaPlugin {
         scenarioManager.addCategory(CATEGORY_COMMANDS);
     }
 
-    public void createConfigs(Plugin plugin) {
-        powertoolFile = new File(plugin.getDataFolder(), "powertool.yml");
-        messagesFile = new File(plugin.getDataFolder(), "messages.yml");
+    public void createConfigs() {
+        powertoolFile = new File(this.getDataFolder(), "powertool.yml");
+        messagesFile = new File(this.getDataFolder(), "messages.yml");
 
         if (!powertoolFile.exists()) {
             powertoolFile.getParentFile().mkdirs();
-            plugin.saveResource("powertool.yml", false);
+            this.saveResource("powertool.yml", false);
         }
 
         if(!messagesFile.exists()){
             powertoolFile.getParentFile().mkdirs();
-            plugin.saveResource("messages.yml", false);
+            this.saveResource("messages.yml", false);
         }
 
         powertoolData = new YamlConfiguration();

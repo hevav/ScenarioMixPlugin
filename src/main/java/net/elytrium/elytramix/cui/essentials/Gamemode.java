@@ -10,9 +10,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Gamemode implements CommandExecutor {
-    private final Plugin plugin;
-
-    public Gamemode(Plugin plugin){ this.plugin = plugin; }
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
@@ -39,7 +36,7 @@ public class Gamemode implements CommandExecutor {
             Player target = Bukkit.getPlayer(strings[1]);
 
             if(strings[1].equals("*")){
-                commandSender.sendMessage(plugin.getMessageString("elytrium.gamemode-change-multiple"));
+                commandSender.sendMessage(Plugin.getInstance().getMessageString("elytrium.gamemode-change-multiple"));
                 for(Player p:Bukkit.getOnlinePlayers()){
                     if(p != commandSender){
                         changeMode(p, strings[0]);
@@ -48,7 +45,7 @@ public class Gamemode implements CommandExecutor {
                 return true;
             } else {
                 if(target == null){
-                    commandSender.sendMessage(plugin.getMessageString("not-found"));
+                    commandSender.sendMessage(Plugin.getInstance().getMessageString("not-found"));
                     return true;
                 } else{
                     changeMode(target, strings[0]);
@@ -64,25 +61,25 @@ public class Gamemode implements CommandExecutor {
             case "1":
             case "creative":
                 player.setGameMode(GameMode.CREATIVE);
-                player.sendMessage(plugin.getMessageString("elytramix.gamemode-change")
+                player.sendMessage(Plugin.getInstance().getMessageString("elytramix.gamemode-change")
                         .replace("{mode}", GameMode.CREATIVE.name()));
                 break;
             case "0":
             case "survival":
                 player.setGameMode(GameMode.SURVIVAL);
-                player.sendMessage(plugin.getMessageString("elytramix.gamemode-change")
+                player.sendMessage(Plugin.getInstance().getMessageString("elytramix.gamemode-change")
                         .replace("{mode}", GameMode.SURVIVAL.name()));
                 break;
             case "2":
             case "adventure":
                 player.setGameMode(GameMode.ADVENTURE);
-                player.sendMessage(plugin.getMessageString("elytramix.gamemode-change")
+                player.sendMessage(Plugin.getInstance().getMessageString("elytramix.gamemode-change")
                         .replace("{mode}", GameMode.ADVENTURE.name()));
                 break;
             case "3":
             case "spectator":
                 player.setGameMode(GameMode.SPECTATOR);
-                player.sendMessage(plugin.getMessageString("elytramix.gamemode-change")
+                player.sendMessage(Plugin.getInstance().getMessageString("elytramix.gamemode-change")
                         .replace("{mode}", GameMode.SPECTATOR.name()));
                 break;
             default:

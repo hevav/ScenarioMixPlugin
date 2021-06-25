@@ -9,9 +9,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Rain implements CommandExecutor {
-    private final Plugin plugin;
-
-    public Rain(Plugin plugin){ this.plugin = plugin; }
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
@@ -23,7 +20,7 @@ public class Rain implements CommandExecutor {
         World world = ((Player) commandSender).getWorld();
 
         world.setStorm(true);
-        commandSender.sendMessage(plugin.getMessageString("elytramix.rain")
+        commandSender.sendMessage(Plugin.getInstance().getMessageString("elytramix.rain")
                 .replace("{world}", world.getName()));
 
         return true;

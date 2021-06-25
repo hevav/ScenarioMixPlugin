@@ -8,9 +8,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class KickAll implements CommandExecutor {
-    private final Plugin plugin;
-
-    public KickAll(Plugin plugin){ this.plugin = plugin; }
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
@@ -25,7 +22,7 @@ public class KickAll implements CommandExecutor {
             }
         }
 
-        commandSender.sendMessage(plugin.getMessageString("elytramix.kickall"));
+        commandSender.sendMessage(Plugin.getInstance().getMessageString("elytramix.kickall"));
 
         return true;
     }

@@ -9,9 +9,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Night implements CommandExecutor {
-    private final Plugin plugin;
-
-    public Night(Plugin plugin){ this.plugin = plugin; }
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
@@ -23,7 +20,7 @@ public class Night implements CommandExecutor {
         Player p = (Player) commandSender;
         World world = p.getWorld();
         world.setTime(14000);
-        commandSender.sendMessage(plugin.getMessageString("elytramix.night")
+        commandSender.sendMessage(Plugin.getInstance().getMessageString("elytramix.night")
                 .replace("{world}", world.getName()));
         return true;
     }

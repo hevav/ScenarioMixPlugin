@@ -9,10 +9,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class Fly implements CommandExecutor {
-    private final Plugin plugin;
-
-    public Fly(Plugin plugin){ this.plugin = plugin; }
-
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if(strings.length == 0) {
@@ -23,18 +19,18 @@ public class Fly implements CommandExecutor {
             Player p = (Player) commandSender;
             if(p.getAllowFlight()) {
                 p.setAllowFlight(false);
-                commandSender.sendMessage(plugin.getMessageString("elytramix.fly-disable"));
+                commandSender.sendMessage(Plugin.getInstance().getMessageString("elytramix.fly-disable"));
                 return true;
             }
             p.setAllowFlight(true);
-            commandSender.sendMessage(plugin.getMessageString("elytramix.fly-enable"));
+            commandSender.sendMessage(Plugin.getInstance().getMessageString("elytramix.fly-enable"));
         }
 
 
         if(strings.length >= 1) {
             if (strings[0].equals("*")){
                 if(strings[1].equals("disable")){
-                    commandSender.sendMessage(plugin.getMessageString("elytramix.fly-disable-multiple"));
+                    commandSender.sendMessage(Plugin.getInstance().getMessageString("elytramix.fly-disable-multiple"));
                     for (Player p : Bukkit.getOnlinePlayers()){
                         if(p != commandSender){
                             p.setAllowFlight(false);
@@ -42,7 +38,7 @@ public class Fly implements CommandExecutor {
                     }
                     return true;
                 } else if(strings[1].equals("enable")){
-                    commandSender.sendMessage(plugin.getMessageString("elytramix.fly-enable-multiple"));
+                    commandSender.sendMessage(Plugin.getInstance().getMessageString("elytramix.fly-enable-multiple"));
                     for (Player p : Bukkit.getOnlinePlayers()){
                         if(p != commandSender){
                             p.setAllowFlight(true);
@@ -57,17 +53,17 @@ public class Fly implements CommandExecutor {
                 Player p = Bukkit.getPlayer(name);
 
                 if(p == null){
-                    commandSender.sendMessage(plugin.getMessageString("not-found"));
+                    commandSender.sendMessage(Plugin.getInstance().getMessageString("not-found"));
                     return true;
                 }
 
                 if(p.getAllowFlight()) {
                     p.setAllowFlight(false);
-                    p.sendMessage(plugin.getMessageString("elytramix.fly-disable"));
+                    p.sendMessage(Plugin.getInstance().getMessageString("elytramix.fly-disable"));
                     return true;
                 }
                 p.setAllowFlight(true);
-                p.sendMessage(plugin.getMessageString("elytramix.fly-enable"));
+                p.sendMessage(Plugin.getInstance().getMessageString("elytramix.fly-enable"));
                 return true;
             }
         }

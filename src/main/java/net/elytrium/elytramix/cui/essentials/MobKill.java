@@ -11,9 +11,6 @@ import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
 
 public class MobKill implements CommandExecutor {
-    private final Plugin plugin;
-
-    public MobKill(Plugin plugin){ this.plugin = plugin; }
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
@@ -39,7 +36,7 @@ public class MobKill implements CommandExecutor {
         }
 
 
-        sender.sendMessage(plugin.getMessageString("elytramix.mobkill")
+        sender.sendMessage(Plugin.getInstance().getMessageString("elytramix.mobkill")
                 .replace("{count}", String.valueOf(count))
                 .replace("{radius}", String.valueOf(radius)));
 
