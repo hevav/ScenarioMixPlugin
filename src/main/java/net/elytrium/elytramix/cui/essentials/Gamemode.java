@@ -17,7 +17,6 @@ public class Gamemode implements CommandExecutor {
             return false;
         }
 
-        // Если требуется изменить режим только для себя
         if(strings.length == 1) {
             if(!(commandSender instanceof Player)) {
                 commandSender.sendMessage(ChatColor.RED + "Данная команда доступна только игрокам!");
@@ -28,7 +27,7 @@ public class Gamemode implements CommandExecutor {
             return true;
         }
 
-        // Если требуется изменить режим другому игроку или всем игрокам
+
         else if(strings.length == 2) {
             if(!strings[0].equals("0") && !strings[0].equals("1")
             && !strings[0].equals("2") && !strings[0].equals("3")){ return false; }
@@ -36,12 +35,12 @@ public class Gamemode implements CommandExecutor {
             Player target = Bukkit.getPlayer(strings[1]);
 
             if(strings[1].equals("*")){
-                commandSender.sendMessage(Plugin.getInstance().getMessageString("elytrium.gamemode-change-multiple"));
-                for(Player p:Bukkit.getOnlinePlayers()){
-                    if(p != commandSender){
-                        changeMode(p, strings[0]);
+                commandSender.sendMessage(Plugin.getInstance().getMessageString("elytramix.gamemode-change-multiple"));
+                Bukkit.getOnlinePlayers().forEach(player -> {
+                    if(player != commandSender){
+                        changeMode(player, strings[0]);
                     }
-                }
+                });
                 return true;
             } else {
                 if(target == null){
