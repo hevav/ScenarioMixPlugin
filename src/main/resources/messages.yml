@@ -21,6 +21,8 @@ elytramix:
   rain: 'Установлена &cдождливая &fпогода в измерении &c{world}'
   mobkill: 'Было убрано &c{count} &fсущностей в радиусе &c{radius} &fблоков'
   kickall: 'Всех игроков смело ветром...'
+  tpall: 'Все игроки были телепортированы к вам'
+  tphere: 'Игрок &c{player} &fбыл телепортирован к вам'
 scenariomix:
   enable: 'Активирован сценарий &c{scenario}'
   disable: 'Деактивирован сценарий &c{scenario}'
