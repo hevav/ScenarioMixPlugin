@@ -3,6 +3,7 @@
 Версия: 1.2<br>
 Spigot-плагин на сценарии для ивентов (fork плагина от 7isenko)<br>
 Нативная версия: 1.16.4<br>
+Для работы ElytraMix требуется наличие плагинов **WorldGuard** и **WorldEdit**!
 **Версия 1.12.2 ныне не поддерживается!**<br>
 [Скачать](https://github.com/Elytrium/ElytraMix/releases)
 
