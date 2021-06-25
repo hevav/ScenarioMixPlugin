@@ -24,7 +24,7 @@ public class WorldGuardUtil {
 
         try{
             return mgr.getRegion(regions.get(0));
-        } catch(IndexOutOfBoundsException e){
+        } catch(IndexOutOfBoundsException | NullPointerException e){
             return mgr.getRegion("__global__");
         }
     }
