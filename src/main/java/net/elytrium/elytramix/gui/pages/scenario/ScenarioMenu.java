@@ -69,6 +69,6 @@ public class ScenarioMenu extends Menu {
 
     @Override
     public void onClick(InventoryInteractEvent event) {
-        mainMenu.open((Player) event.getWhoClicked());
+
     }
 }

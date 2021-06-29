@@ -13,7 +13,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @SuppressWarnings("rawtypes")
-public class ScenarioMixCommand implements CommandExecutor {
+public class    ScenarioMixCommand implements CommandExecutor {
     private final Plugin plugin;
 
     public ScenarioMixCommand(Plugin plugin){ this.plugin = plugin; }

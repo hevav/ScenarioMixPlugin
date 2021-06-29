@@ -1,9 +1,13 @@
 package net.elytrium.elytramix.gui.pages.scenario;
 
+import net.elytrium.elytramix.Plugin;
 import net.elytrium.elytramix.gui.Menu;
 import net.elytrium.elytramix.gui.MenuItem;
+import net.elytrium.elytramix.gui.pages.values.BooleanMenu;
+import net.elytrium.elytramix.gui.pages.values.IntegerMenu;
 import net.elytrium.elytramix.scenarios.Scenario;
 import net.elytrium.elytramix.scenarios.config.Configuration;
+import net.elytrium.elytramix.scenarios.config.ValueType;
 import net.elytrium.elytramix.utils.Parser;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -14,6 +18,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,6 +30,7 @@ public class ConfigurationsMenu extends Menu {
     private final Map<String, Configuration> configs;
     private final Menu previous;
     private final Scenario scenario;
+    public final Menu instance = this;
 
     public ConfigurationsMenu(Scenario scenario, Menu previousMenu) {
         super(String.format("Конфигурация для сценария \"%s\"", scenario.getName()), false, 0);
@@ -54,10 +60,17 @@ public class ConfigurationsMenu extends Menu {
 
     private void onClickItem(InventoryClickEvent event, Configuration config) {
         HumanEntity player = event.getWhoClicked();
-        player.sendMessage(ChatColor.AQUA + "Для смены параметра введите следующую команду (кликабельно): ");
-        TextComponent message = new TextComponent(ChatColor.GREEN + Parser.getConfigCommand(configs.get(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()))));
-        message.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, Parser.getConfigCommand(configs.get(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName())))));
-        player.spigot().sendMessage(message);
+
+        if(config.getValueType() == ValueType.INTEGER){
+            new IntegerMenu(scenario, instance, config.getName()).open((Player) player);
+        } else if(config.getValueType() == ValueType.BOOLEAN){
+            new BooleanMenu(scenario, instance, config.getName()).open((Player) player);
+        } else {
+            player.sendMessage(ChatColor.AQUA + "Для смены параметра введите следующую команду (кликабельно): ");
+            TextComponent message = new TextComponent(ChatColor.GREEN + Parser.getConfigCommand(configs.get(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName()))));
+            message.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, Parser.getConfigCommand(configs.get(ChatColor.stripColor(event.getCurrentItem().getItemMeta().getDisplayName())))));
+            player.spigot().sendMessage(message);
+        }
     }
 
     @Override
