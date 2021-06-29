@@ -97,7 +97,6 @@ fabric.properties
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
@@ -111,4 +110,5 @@ hs_err_pid*
 .idea/workspace.xml
 target/
 /.idea/**
+/.idea/
 /.idea/
