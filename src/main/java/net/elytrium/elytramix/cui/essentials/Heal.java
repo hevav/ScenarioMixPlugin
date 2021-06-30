@@ -25,11 +25,11 @@ public class Heal implements CommandExecutor {
         }
         if(strings.length == 1) {
             if(strings[0].equals("*")){
-                for(Player p:Bukkit.getOnlinePlayers()){
-                    p.setHealth(20);
-                    p.setFoodLevel(20);
-                    p.sendMessage(Plugin.getInstance().getMessageString("elytramix.heal-healed"));
-                }
+                Bukkit.getOnlinePlayers().forEach(player -> {
+                    player.setHealth(20);
+                    player.setFoodLevel(20);
+                    player.sendMessage(Plugin.getInstance().getMessageString("elytramix.heal-healed"));
+                });
             } else {
                 Player p = Bukkit.getPlayer(strings[0]);
                 if(p == null) {

@@ -31,23 +31,21 @@ public class Fly implements CommandExecutor {
             if (strings[0].equals("*")){
                 if(strings[1].equals("disable")){
                     commandSender.sendMessage(Plugin.getInstance().getMessageString("elytramix.fly-disable-multiple"));
-                    for (Player p : Bukkit.getOnlinePlayers()){
-                        if(p != commandSender){
-                            p.setAllowFlight(false);
+                    Bukkit.getOnlinePlayers().forEach(player -> {
+                        if(player != commandSender){
+                            player.setAllowFlight(false);
                         }
-                    }
+                    });
                     return true;
                 } else if(strings[1].equals("enable")){
                     commandSender.sendMessage(Plugin.getInstance().getMessageString("elytramix.fly-enable-multiple"));
-                    for (Player p : Bukkit.getOnlinePlayers()){
-                        if(p != commandSender){
-                            p.setAllowFlight(true);
+                    Bukkit.getOnlinePlayers().forEach(player -> {
+                        if(player != commandSender){
+                            player.setAllowFlight(true);
                         }
-                    }
+                    });
                     return true;
-                } else {
-                    return false;
-                }
+                } else return false;
             } else {
                 String name = strings[0];
                 Player p = Bukkit.getPlayer(name);
