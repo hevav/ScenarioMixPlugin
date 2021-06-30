@@ -30,15 +30,15 @@ public class Parser {
     public static String createTypeMessage(Configuration configuration) {
         switch (configuration.getValueType()) {
             case INTEGER:
-                return Plugin.getInstance().getMessageString("scenariomix.args.integer");
+                return Plugin.getInstance().getMessagesConfig().getString("scenariomix.args.integer");
             case BOOLEAN:
-                return Plugin.getInstance().getMessageString("scenariomix.args.boolean");
+                return Plugin.getInstance().getMessagesConfig().getString("scenariomix.args.boolean");
             case MATERIAL:
-                return Plugin.getInstance().getMessageString("scenariomix.args.material");
+                return Plugin.getInstance().getMessagesConfig().getString("scenariomix.args.material");
             case STRING:
-                return Plugin.getInstance().getMessageString("scenariomix.args.string");
+                return Plugin.getInstance().getMessagesConfig().getString("scenariomix.args.string");
             default:
-                return Plugin.getInstance().getMessageString("scenariomix.args.default");
+                return Plugin.getInstance().getMessagesConfig().getString("scenariomix.args.default");
         }
     }
 }

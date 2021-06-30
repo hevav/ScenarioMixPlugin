@@ -6,6 +6,7 @@ import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.protection.flags.Flag;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import com.sk89q.worldguard.protection.managers.RegionManager;
+import com.sk89q.worldguard.protection.regions.GlobalProtectedRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 import net.elytrium.elytramix.Plugin;
@@ -24,8 +25,15 @@ public class WorldGuardUtil {
 
         try{
             return mgr.getRegion(regions.get(0));
-        } catch(IndexOutOfBoundsException | NullPointerException e){
-            return mgr.getRegion("__global__");
+        } catch(IndexOutOfBoundsException e){
+            ProtectedRegion global = mgr.getRegion("__global__");
+
+            if(global == null){
+                global = new GlobalProtectedRegion("__global__");
+                mgr.addRegion(global);
+            }
+
+            return global;
         }
     }
 
