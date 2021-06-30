@@ -1,11 +1,15 @@
 # ScenarioMix
 
-Версия: 1.2<br>
+[![Build](https://github.com/Elytrium/ElytraMix/actions/workflows/maven.yml/badge.svg?branch=master)](https://github.com/Elytrium/ElytraMix/actions/workflows/maven.yml)
+![Issuses](https://img.shields.io/github/issues/Elytrium/ElytraMix)
+![Stars](https://img.shields.io/github/stars/Elytrium/ElytraMix)
+
+Версия: 1.2.1<br>
 Spigot-плагин на сценарии для ивентов (fork плагина от 7isenko)<br>
 Нативная версия: 1.16.4<br>
 Для работы ElytraMix требуется наличие плагинов **WorldGuard** и **WorldEdit**!<br>
 **Версия 1.12.2 ныне не поддерживается!**<br>
-[Скачать](https://github.com/Elytrium/ElytraMix/releases)
+[Скачать](https://github.com/Elytrium/ElytraMix/releases/latest)
 
 ## Использование
 
