@@ -22,4 +22,4 @@ jobs:
         java-version: '8'
         distribution: 'adopt'
     - name: Build
-      run: mvn -B package clean deploy --file pom.xml
+      run: mvn -B package clean --file pom.xml
