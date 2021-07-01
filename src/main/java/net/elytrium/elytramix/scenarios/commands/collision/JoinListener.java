@@ -8,27 +8,19 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 
+import static net.elytrium.elytramix.scenarios.commands.collision.Collision.getCollisionTeam;
+
 public class JoinListener implements Listener {
     Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
     Team team = scoreboard.getTeam("em-nametag");
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e){
-        if(team == null){
-            team = scoreboard.registerNewTeam("em-nametag");
-            team.setOption(Team.Option.COLLISION_RULE, Team.OptionStatus.NEVER);
-        }
-
-        team.addPlayer(e.getPlayer());
+        getCollisionTeam().addPlayer(e.getPlayer());
     }
 
     @EventHandler
     public void onLeave(PlayerQuitEvent e){
-        if(team == null){
-            team = scoreboard.registerNewTeam("em-nametag");
-            team.setOption(Team.Option.NAME_TAG_VISIBILITY, Team.OptionStatus.NEVER);
-        }
-
-        team.removePlayer(e.getPlayer());
+        getCollisionTeam().removePlayer(e.getPlayer());
     }
 }
